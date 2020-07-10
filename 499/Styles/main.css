@@ -1,0 +1,39 @@
+body {
+	font-family: Arial, Helvetica, sans-serif
+	font-size 87.5%;
+	margin-left: 2em;
+	color: black
+}
+header {
+	padding-bottom: .75em;
+	border-bottom: 3px solid black;
+	margin-bottom: 0;
+}
+h1 {
+	font-size: 200%;
+	margin-bottom: 0%;
+	text-shadow: 2px 1px;
+}
+h1{ font-family: Arial, sans-serif;}
+p { margin-left: 3em;}
+
+h2+p  { margin-left: 2em;}
+input [type="submit"]{
+	border: 1px solid black;
+	color: blue;
+	background-color: #facd8a;
+}
+h1, h2, h3 {color: blue; }
+a:link {color: blue; }
+a:hover, a:focus { color: red }
+section p:first-child {font-weight: bold; }
+section p:first-child:first-letter { font-size: 150% }
+ footer p {
+ 	font-size: 80%;
+ 	text-align: right;
+ }
+ .highlight { font-weight: bold !important; }
+ 
+
+
+ 

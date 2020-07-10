@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "/WEB-INF/classes/struts-2.1.7.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+
+    <package name="basicstruts2" extends="struts-default" namespace="/">
+
+        <!--
+        If no class attribute is specified the framework will assume success and
+        render the result index.jsp
+        If no name value for the result node is specified the success value is the default
+        -->
+        
+	    <interceptors>
+		    <interceptor name="loginInterceptor"
+		        class="com.group5.struts2.vTrain.interceptor.LoginInterceptor">
+			    </interceptor>
+			    <interceptor-stack name="loginStack">
+			        <interceptor-ref name="loginInterceptor" />
+			    </interceptor-stack>
+		</interceptors>
+		
+        
+        <action name="index">
+            <result>/WEB-INF/results/login.jsp</result>
+        </action>
+
+        <action name="">
+            <result>/WEB-INF/results/login.jsp</result>
+        </action>
+		
+        <!--
+        If the URL is hello.action the call the execute method of class HelloWorldAction.
+        If the result returned by the execute method is success render the HelloWorld.jsp
+        -->
+        <action name="hello" class="com.group5.struts2.vTrain.action.HelloWorldAction" method="execute">
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>            <result name="success">/WEB-INF/results/main.jsp</result>
+            <result name="input">/WEB-INF/results/index.jsp</result>
+        </action>
+        
+        <action name="login" class="com.group5.struts2.vTrain.action.LoginAction" method="execute"> 
+            <result name="success">/WEB-INF/results/main.jsp</result>
+            <result name="input">/WEB-INF/results/loginFailed.jsp</result>
+            <result name="notactivated">/WEB-INF/results/notactivated.jsp</result>
+            <result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="registration" class="com.group5.struts2.vTrain.action.RegistrationAction" method="execute">
+            <result name="registration">/WEB-INF/results/register.jsp</result>
+            <result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="register" class="com.group5.struts2.vTrain.action.RegisterAction" method="execute">
+            <result name="success">/WEB-INF/results/registered.jsp</result>
+            <result name="fail">/WEB-INF/results/failedregister.jsp</result>
+            <result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="search" class="com.group5.struts2.vTrain.action.Search" method="execute">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result name="success">/WEB-INF/results/searchResults.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="logout" class="com.group5.struts2.vTrain.action.Logout" method="execute">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result name="success">/WEB-INF/results/login.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+
+        <action name="profile">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result>/WEB-INF/results/profile.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="required">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result>/WEB-INF/results/required.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="advSearch">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result>/WEB-INF/results/advSearch.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="upload">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result>/WEB-INF/results/upload.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+        
+        <action name="viewUploads">
+        	<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+        	<result>/WEB-INF/results/myUploads.jsp</result>
+        	<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+        </action>
+
+		<action name="createReport">
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+			<result>/WEB-INF/results/createReport.jsp</result>
+			<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+		</action>
+		
+		<action name="administrate">
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>  
+			<result>/WEB-INF/results/administrate.jsp</result>
+			<result name="notloggedin">/WEB-INF/results/login.jsp</result>
+		</action>
+
+        
+        
+
+    </package>
+
+</struts>
